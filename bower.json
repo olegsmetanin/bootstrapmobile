@@ -1,0 +1,8 @@
+{
+  "name": "structuredway-com-website",
+  "version": "0.0.1",
+  "dependencies": {
+  	"bootstrap-sass-official": "~3.1.1",
+  	"font-awesome":"~4.1.0"
+  }
+}

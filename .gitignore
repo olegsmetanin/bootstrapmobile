@@ -1,0 +1,15 @@
+*#
+*.iml
+*.ipr
+*.iws
+*.pyc
+*.tm.epoch
+*.vim
+.idea/
+stat/*
+!.gitkeep
+node_modules/
+src/vendor/
+dist/
+report/
+.sass-cache/

@@ -1,0 +1,22 @@
+{
+	"name": "bootstrap-mobile",
+	"version": "0.0.1",
+	"devDependencies": {
+		"gulp": "latest",
+		"bower": "latest",
+        "run-sequence":"latest",
+        "gulp-shell":"0.2.4",
+
+		"gulp-sass": "latest",
+		"node-bourbon": "1.0.0",
+
+		"express": "latest",
+		"connect-livereload": "latest",
+
+		"gulp-uglify":"latest",
+		"gulp-concat":"latest"
+	},
+	"engines": {
+		"node": ">=0.10.0"
+	}
+}
