@@ -14,7 +14,14 @@
 		"connect-livereload": "latest",
 
 		"gulp-uglify":"latest",
-		"gulp-concat":"latest"
+		"gulp-concat":"latest",
+
+		"browserify": "latest",
+		"browserify-shim": "latest",
+		"exorcist": "latest",
+		"vinyl-source-stream": "latest",
+
+		"gulp-jshint": "latest"
 	},
 	"engines": {
 		"node": ">=0.10.0"
