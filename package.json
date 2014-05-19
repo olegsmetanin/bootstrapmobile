@@ -21,9 +21,19 @@
 		"exorcist": "latest",
 		"vinyl-source-stream": "latest",
 
-		"gulp-jshint": "latest"
+		"gulp-jshint": "latest",
+
+		"gulp-iconfont": "latest"
 	},
 	"engines": {
 		"node": ">=0.10.0"
+	},
+	"browserify": {
+		"transform": [
+			"browserify-shim"
+		]
+	},
+	"browserify-shim": {
+		"jquery": "global:$"
 	}
 }

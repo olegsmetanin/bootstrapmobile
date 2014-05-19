@@ -1,0 +1,32 @@
+
+
+@font-face {
+  font-family: $bm-icon-font-name;
+  src: url('#{$icon-font-path}#{$bm-icon-font-name}.eot');
+  src: url('#{$icon-font-path}#{$bm-icon-font-name}.eot?#iefix') format('embedded-opentype'),
+  //url('#{$icon-font-path}#{$bm-icon-font-name}.woff') format('woff'),
+  url('#{$icon-font-path}#{$bm-icon-font-name}.ttf') format('truetype'),
+  url('#{$icon-font-path}#{$bm-icon-font-name}.svg##{$bm-icon-font-name}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fbm {
+  display: inline-block;
+  font-family: $bm-icon-font-name ! important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Catchall baseclass
+.bmglyphicon {
+  font-family: $bm-icon-font-name ! important;
+}
+
+.fbm-square                       { &:before { content: "\e019"; } }
+.fbm-squareprinter                { &:before { content: "\e021"; } }
+.fbm-database                     { &:before { content: "\e023"; } }
+.fbm-cloud                        { &:before { content: "\e024"; } }

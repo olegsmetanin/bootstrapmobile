@@ -24,7 +24,9 @@ var livereloadport = 35729,
 	exorcist = require('exorcist'),
 	source = require('vinyl-source-stream'),
 
-	jshint = require('gulp-jshint');
+	jshint = require('gulp-jshint'),
+
+	font = require('gulp-iconfont');
 
 server.use(express.static(path.resolve('./dist')));
 
@@ -37,8 +39,8 @@ gulp.task('bower',
 gulp.task('styles', function () {
 	return gulp.src(['./src/assets/scss/*.scss'])
 		.pipe(gulpsass({
-			//outputStyle: 'expanded',
-			outputStyle: 'compressed', 
+			outputStyle: 'expanded',
+			//outputStyle: 'compressed', 
 			sourceComments: 'map',
 			includePaths: [
 				'./src/assets/scss/theme',
@@ -55,8 +57,41 @@ gulp.task('html', function() {
 		.pipe(gulp.dest('./dist'));
 });
 
+gulp.task('font', function(){
+	return gulp.src(['./src/assets/font/*.svg'])
+		.pipe(font({
+			fontName: 'bmfont',
+			appendCodepoints: true, // recommanded option
+			descent:  -256,
+			fontHeight: 1792,
+			fontWidth: 1536
+		}))
+		.pipe(gulp.dest('./dist/assets/fonts'));
+});
+
 gulp.task('bootstrap:js', function() {
-  gulp.src('./src/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/*.js')
+  
+  var files = [
+  	'affix.js',
+	'alert.js',
+	'button.js',
+	'carousel.js',
+	'collapse.js',
+	'dropdown.js',
+	'tab.js',
+	'transition.js',
+	'scrollspy.js',
+	'modal.js',
+	'tooltip.js',
+	'popover.js'
+  ];
+
+	var paths = [];
+	for (var i=0; i<files.length; i++) {
+		paths.push('./src/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/'+files[i]);
+	} 
+
+  return gulp.src(paths)
     .pipe(concat('bootstrap.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./dist/assets/js'))
@@ -97,14 +132,8 @@ gulp.task('js:bundle', function() {
 		.pipe(gulp.dest('./dist/assets/js'));
 });
 
-gulp.task('js:min', function() {
-  gulp.src('./dist/assets/js/bm.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('./dist/assets/js'))
-});
-
 gulp.task('js', function(done) {
-	runSequence('js:lint', 'js:bundle', 'js:min', done);
+	runSequence('js:lint', 'js:bundle', done);
 });
 
 gulp.task('serve', function() {
@@ -113,10 +142,12 @@ gulp.task('serve', function() {
 
 gulp.task('watch', function () {
 	gulp.watch('src/assets/js/**', ['js']);
+	gulp.watch(['./src/**/*', '!./src/assets/**', '!./src/vendor{,/**}'], ['html']);
+	gulp.watch('./src/assets/scss/**/*.scss', ['styles']);	 
 });
 
 gulp.task('build', function(done) {
-	runSequence('bower', ['styles', 'html', 'bootstrap:js', 'bootstrap:font', 'fontawesome:font', 'jquery:js', 'js'], done);
+	runSequence('bower', ['styles', 'html', 'font', 'bootstrap:js', 'bootstrap:font', 'fontawesome:font', 'jquery:js', 'js'], done);
 });
 
 gulp.task('run', function(done) {
