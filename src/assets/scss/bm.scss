@@ -1,8 +1,11 @@
 @import 'theme/vars.scss';
-@import 'theme/font.scss';
 
 @import 'bourbon';
 
 @import 'bootstrap';
 
 @import 'font-awesome';
+
+@import 'theme/font.scss';
+@import 'theme/nav.scss';
+

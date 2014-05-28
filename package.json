@@ -28,6 +28,10 @@
 	"engines": {
 		"node": ">=0.10.0"
 	},
+	"browser": {
+		"velocity": "./src/vendor/velocity/jquery.velocity.min.js",
+		"iscroll": "./src/vendor/iscroll/build/iscroll.js"
+	},
 	"browserify": {
 		"transform": [
 			"browserify-shim"
